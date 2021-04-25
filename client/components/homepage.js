@@ -10,7 +10,7 @@ import {
   CardMedia,
   Typography,
   createMuiTheme,
-  Button
+  Button,
 } from '@material-ui/core'
 import PetsIcon from '@material-ui/icons/Pets'
 
@@ -18,20 +18,20 @@ class Homepage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      zipCode: ''
+      zipCode: '',
     }
 
     this.submitHandler = this.submitHandler.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
 
-  submitHandler = e => {
+  submitHandler = (e) => {
     e.preventDefault()
     const {zipCode} = this.state
     this.props.loadAllDogs(zipCode)
   }
 
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({zipCode: e.target.value})
   }
 
@@ -43,8 +43,10 @@ class Homepage extends React.Component {
     //   alldogs = <div>Loading...</div>
     // }
 
+    console.log(' dogs', dogs)
+
     if (dogs.length > 0) {
-      alldogs = dogs[0].map(dog => (
+      alldogs = dogs[0].map((dog) => (
         <div rownumber="allDogsView" key={dog.rownumber}>
           <Link to={`/dogs/${dog.rownumber}`}>{dog.animalname}</Link>
         </div>
@@ -96,15 +98,15 @@ class Homepage extends React.Component {
 /**
  * CONTAINER
  */
-const mapState = state => {
+const mapState = (state) => {
   return {
-    dogs: state.dogs
+    dogs: state.dogs,
   }
 }
 
-const mapDispatch = dispatch => {
+const mapDispatch = (dispatch) => {
   return {
-    loadAllDogs: zipCode => dispatch(fetchAllDogs(zipCode))
+    loadAllDogs: (zipCode) => dispatch(fetchAllDogs(zipCode)),
   }
 }
 

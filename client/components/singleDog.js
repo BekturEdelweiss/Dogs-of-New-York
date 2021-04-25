@@ -8,7 +8,7 @@ class Dog extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      rowNumber: ''
+      rowNumber: '',
     }
   }
   componentDidMount() {
@@ -20,7 +20,7 @@ class Dog extends React.Component {
     return (
       <div>
         <Typography variant="h2" component="h2" align="left" color="Primary">
-          {dog[0].map(dog => (
+          {dog[0].map((dog) => (
             <div rownumber="allDogsView" key={dog.rownumber}>
               Name: {dog.animalname}
               <br />
@@ -37,15 +37,15 @@ class Dog extends React.Component {
   }
 }
 
-const mapState = state => {
+const mapState = (state) => {
   return {
-    dog: state.dog
+    dog: state.dog,
   }
 }
 
-const mapDispatch = dispatch => {
+const mapDispatch = (dispatch) => {
   return {
-    loadSingleDog: rowNumber => dispatch(fetchDog(rowNumber))
+    loadSingleDog: (rowNumber) => dispatch(fetchDog(rowNumber)),
   }
 }
 
